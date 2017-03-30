@@ -1,0 +1,69 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Crear
+    <small>Libro</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="#">Taller Uno</a></li>
+    <li class="active">Crear libro</li>
+  </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+	    <!-- left column -->
+	    <div class="col-md-6">
+	    	<div class="box box-primary">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">Nuevo Libro</h3>
+	            </div>
+	            <!-- /.box-header -->
+	            <!-- form start -->
+	            <form role="form" (ngSubmit)="onSubmit()" #bookForm="ngForm">
+	              <div class="box-body">
+	                <div class="form-group">
+					    <label for="isbn">ISBN</label>
+					    <input type="text" class="form-control" id="isbn" required [(ngModel)]="book.isbn" name="isbn" #isbn="ngModel" placeholder="ISBN">
+					</div>
+					<div class="form-group">
+					    <label for="book_title">Título</label>
+					    <input type="text" class="form-control" id="book_title" required [(ngModel)]="book.book_title" name="book_title" #book_title="ngModel" placeholder="Título">
+					</div>
+					<div class="form-group">
+					    <label for="book_author">Autor</label>
+					    <input type="text" class="form-control" id="book_author" required [(ngModel)]="book.book_author" name="book_author" #book_author="ngModel" placeholder="Título">
+					</div>
+					<div class="form-group">
+					    <label for="year_of_publication">Año Publicación</label>
+					    <input type="number" class="form-control" id="ayear_of_publicationge" [(ngModel)]="book.year_of_publication" name="year_of_publication" #year_of_publication="ngModel" placeholder="Año publicación">
+					</div>
+					<div class="form-group">
+					    <label for="publisher">Editorial</label>
+					    <input type="text" class="form-control" id="publisher" required [(ngModel)]="book.publisher" name="publisher" #publisher="ngModel" placeholder="Editorial">
+					</div>
+					<div class="form-group">
+					    <label for="image_url_s">Icon</label>
+					    <input type="text" class="form-control" id="image_url_s" [(ngModel)]="book.image_url_s" name="image_url_s" #image_url_s="ngModel" placeholder="Icon">
+					</div>
+					<div class="form-group">
+					    <label for="image_url_m">Thumbnail</label>
+					    <input type="text" class="form-control" id="image_url_m" [(ngModel)]="book.image_url_m" name="image_url_m" #image_url_m="ngModel" placeholder="Thumbnail">
+					</div>
+					<div class="form-group">
+					    <label for="image_url_l">Imagen</label>
+					    <input type="text" class="form-control" id="image_url_l" [(ngModel)]="book.image_url_l" name="image_url_l" #image_url_l="ngModel" placeholder="Imagen">
+					</div>
+	              </div>
+	              <!-- /.box-body -->
+
+	              <div class="box-footer">
+	                <button type="submit" class="btn btn-primary" [disabled]="!bookForm.form.valid">Crear Libro</button>
+	              </div>
+	            </form>
+	          </div>
+	          <!-- /.box -->
+	    </div>
+    </div>
+</section>

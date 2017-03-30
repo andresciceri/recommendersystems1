@@ -1,0 +1,45 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Crear
+    <small>Usuario</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="#">Taller Uno</a></li>
+    <li class="active">Crear usuario</li>
+  </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+	    <!-- left column -->
+	    <div class="col-md-6">
+	    	<div class="box box-primary">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">Nuevo Usuario</h3>
+	            </div>
+	            <!-- /.box-header -->
+	            <!-- form start -->
+	            <form role="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+	              <div class="box-body">
+	                <div class="form-group">
+					    <label for="exampleInputEmail1">Ubicación</label>
+					    <input type="text" class="form-control" id="location" required [(ngModel)]="user.location" name="location" #location="ngModel" placeholder="Ubicación">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Edad</label>
+					    <input type="number" class="form-control" id="age" [(ngModel)]="user.age" name="age" #age="ngModel" placeholder="Edad">
+					</div>
+	              </div>
+	              <!-- /.box-body -->
+
+	              <div class="box-footer">
+	                <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Crear</button>
+	              </div>
+	            </form>
+	          </div>
+	          <!-- /.box -->
+	    </div>
+    </div>
+</section>

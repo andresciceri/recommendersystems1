@@ -1,0 +1,131 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Recomendación
+    <small>Resultados</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="#">Taller Uno</a></li>
+    <li class="active">Resultados</li>
+  </ol>
+</section>
+<section class="content">
+	<div class="row">
+	    <!-- left column -->
+	    <div class="col-md-6">
+	    	<div class="box box-primary">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">Consultar Usuario</h3>
+	            </div>
+	            <form role="form">
+	              <div class="box-body">
+	              	<div class="input-group input-group-sm">
+		                <input type="text" class="form-control" placeholder="Ingrese usuario" [(ngModel)]="user.user_id" name="user_id" #user_id="ngModel">
+		                <span class="input-group-btn">
+		                    <button type="button" class="btn btn-info btn-flat" (click)="search()">Buscar</button>
+		                </span>
+		            </div>
+		            <div class="input-group input-group-md">
+		            	<label>Similitudes</label>
+		            	<div class="form-group">
+			            	<label class="radio-inline">
+							  <input type="radio" name="similarity" id="inlineRadio1" value="j" [(ngModel)]="similarity"> Jaccard
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="similarity" id="inlineRadio2" value="c" [(ngModel)]="similarity"> Coseno
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="similarity" id="inlineRadio3" value="p" [(ngModel)]="similarity"> Pearson
+							</label>
+		            	</div>
+		            	
+		            </div>
+		            <div class="input-group input-group-md">
+		            	<label>Porcentaje</label>
+		            	<select class="form-control" name="percentage" [(ngModel)]="percentage">
+						  <option value="" disabled>Seleccionar</option>
+						  <option [ngValue]="50">50%</option>
+						  <option [ngValue]="70">70%</option>
+						</select>
+		            </div>
+		            <div class="input-group input-group-md">
+		            	<label>Filtro Colaborativo</label>
+		            	<select class="form-control" name="filter" [(ngModel)]="filter">
+						  <option value="" disabled>Seleccionar</option>
+						  <option [ngValue]="1">Item - Item</option>
+						  <option [ngValue]="2">Usuario - Usuario</option>
+						</select>
+		            </div>
+		            <div class="input-group input-group-md">
+		            	<label>Vecinos</label>
+		            	<input type="number" class="form-control" id="neighbors" placeholder="# de Vecinos" [(ngModel)]="neighbors" [ngModelOptions]="{standalone: true}">
+		            </div>
+	              </div>
+	            </form>
+	        </div>
+	    </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<tabset>
+	    		<tab heading="Resultados">
+	    			<h2>
+					   Libros
+					   <small>Recomendados</small>
+					</h2>
+
+					<div class="row">
+		            	<div class="col-md-3" *ngFor="let book of books; let i=index">
+				          <div class="box box-primary box-solid">
+				            <div class="box-header with-border">
+				              <h3 class="box-title">{{book.book_title}}</h3>
+
+				              <div class="box-tools pull-right">
+				                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				              </div>
+				              <!-- /.box-tools -->
+				            </div>
+				            <!-- /.box-header -->
+				            <div class="box-body">
+				            	<div class="row" style="text-align: center">
+				            		<img width="200" [src]="book.image_url_l" />	
+				            	</div>
+				            	
+				              <p>{{book.book_author}}</p>
+				              <p>{{book.year_of_publication}}</p>
+				            </div>
+				            <!-- /.box-body -->
+				          </div>
+				          <!-- /.box -->
+				        </div>
+				        <!-- /.col -->
+		            </div>
+	    		</tab>
+	    		<tab heading="Gráficas">
+	    			<h2>
+					   Gráficas
+					   <small>Evaluación Modelos</small>
+					</h2>
+					<p-growl [value]="msgs"></p-growl>
+					<div class="row col-md-6">
+						<label>Precision 50%</label>
+						<p-chart type="line"  [data]="precisionF" (onDataSelect)="selectData($event)"></p-chart>	
+					</div>
+					<div class="row col-md-6">
+						<label>Recall 50%</label>
+						<p-chart type="line"  [data]="precisionS" (onDataSelect)="selectData($event)"></p-chart>	
+					</div>
+					<div class="row col-md-6">
+						<label>Precision 70%</label>
+						<p-chart type="line"  [data]="recallF" (onDataSelect)="selectData($event)"></p-chart>	
+					</div>
+					<div class="row col-md-6">
+						<label>Recall 70%</label>
+						<p-chart type="line"  [data]="recallS" (onDataSelect)="selectData($event)"></p-chart>	
+					</div>
+	    		</tab>
+	    	</tabset>
+    	</div>
+    </div>
+</section>
