@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { RatingModule, TabsModule } from 'ng2-bootstrap';
-import { ChartModule, GrowlModule } from 'primeng/primeng';
+import { ChartModule, GrowlModule, ChipsModule } from 'primeng/primeng';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -16,6 +16,7 @@ import { UserService }          from './create-user/user.service';
 import { BookService }          from './create-book/book.service';
 import { RatingService }          from './rating-book/rating.service';
 import { ResultsService }          from './taller-uno/results.service';
+import { ResultsServiceDos }          from './taller-dos/results.service';
 
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -57,9 +58,10 @@ import { RatingPlaceComponent } from './rating-place/rating-place.component';
     TabsModule.forRoot(),
     ChartModule,
     GrowlModule,
+    ChipsModule
     
   ],
-  providers: [UserService,BookService, RatingService, ResultsService],
+  providers: [UserService,BookService, RatingService, ResultsService, ResultsServiceDos],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
